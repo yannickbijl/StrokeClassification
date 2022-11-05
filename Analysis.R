@@ -25,5 +25,5 @@ stroke_coded <- stroke_data %>%
 
 # Summarize data
 sink("summary_stroke.txt")
-print(summary(stroke_coded))
+print(summary(stroke_coded), width = 250) # large enough, but could need adjustment with different dataset
 sink()
