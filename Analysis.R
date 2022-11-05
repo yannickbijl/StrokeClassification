@@ -9,3 +9,16 @@ outcomes <- stroke_data %>%
             mutate(stroke = as.logical(stroke))
 # Remove unnecessary columns for classification
 stroke_data <- stroke_data %>% select(!c(id, stroke))
+
+# Encode data for summarization and further analysis
+stroke_coded <- stroke_data %>%
+                mutate(hypertension = as.logical(hypertension),
+                       heart_disease = as.logical(heart_disease)) %>%
+                mutate(gender = as.factor(gender),
+                       ever_married = as.factor(ever_married),
+                       work_type = as.factor(work_type),
+                       Residence_type = as.factor(Residence_type),
+                       smoking_status = as.factor(smoking_status)) %>%
+                mutate(bmi = ifelse(bmi == "N/A", 0, bmi)) %>%
+                mutate(bmi = as.numeric(bmi)) %>%
+                rename(residence_type = Residence_type)
