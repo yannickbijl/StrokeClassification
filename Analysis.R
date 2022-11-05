@@ -22,3 +22,8 @@ stroke_coded <- stroke_data %>%
                 mutate(bmi = ifelse(bmi == "N/A", 0, bmi)) %>%
                 mutate(bmi = as.numeric(bmi)) %>%
                 rename(residence_type = Residence_type)
+
+# Summarize data
+sink("summary_stroke.txt")
+print(summary(stroke_coded))
+sink()
