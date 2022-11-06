@@ -27,3 +27,7 @@ stroke_coded <- stroke_data %>%
 sink("summary_stroke.txt")
 print(summary(stroke_coded), width = 250) # large enough, but could need adjustment with different dataset
 sink()
+
+# Get pairwise correlations between numeric attributes
+cors <- round(cor(stroke_coded %>% select(where(is.numeric))), 2)
+write_csv(as.data.frame(cors), "correlations_stroke.txt")
