@@ -8,12 +8,13 @@ outcomes <- stroke_data %>%
             select(stroke) %>%
             mutate(stroke = as.logical(stroke))
 # Remove unnecessary columns for classification
-stroke_data <- stroke_data %>% select(!c(id, stroke))
+stroke_data <- stroke_data %>% select(!c(id))
 
 # Encode data for summarization and further analysis
 stroke_coded <- stroke_data %>%
                 mutate(hypertension = as.logical(hypertension),
-                       heart_disease = as.logical(heart_disease)) %>%
+                       heart_disease = as.logical(heart_disease),
+                       stroke = as.logical(stroke)) %>%
                 mutate(gender = as.factor(gender),
                        ever_married = as.factor(ever_married),
                        work_type = as.factor(work_type),
@@ -31,3 +32,13 @@ sink()
 # Get pairwise correlations between numeric attributes
 cors <- round(cor(stroke_coded %>% select(where(is.numeric))), 2)
 write_csv(as.data.frame(cors), "results/correlations_stroke.txt")
+
+# Visualize difference of stroke outcome between numeric attributes
+stroke_long <- stroke_coded %>%
+               select(stroke, where(is.numeric)) %>%
+               pivot_longer(!stroke)
+box <- ggplot(stroke_long, aes(x = name, y = value, color = stroke)) +
+       geom_boxplot() +
+       xlab("Attribute") +
+       ylab("Stroke")
+ggsave("results/test.png", plot = box)
