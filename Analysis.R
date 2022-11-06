@@ -42,3 +42,12 @@ box <- ggplot(stroke_long, aes(x = name, y = value, color = stroke)) +
        xlab("Attribute") +
        ylab("Stroke")
 ggsave("results/test.png", plot = box)
+
+# Get contingency tables between factor/logical attributes against stroke outcome
+write.table(table(stroke_coded %>% select(gender, stroke)), "results/contingency_gender.csv")
+write.table(table(stroke_coded %>% select(hypertension, stroke)), "results/contingency_hypertension.csv")
+write.table(table(stroke_coded %>% select(heart_disease, stroke)), "results/contingency_heart_disease.csv")
+write.table(table(stroke_coded %>% select(ever_married, stroke)), "results/contingency_ever_married.csv")
+write.table(table(stroke_coded %>% select(work_type, stroke)), "results/contingency_work_type.csv")
+write.table(table(stroke_coded %>% select(residence_type, stroke)), "results/contingency_residence_type.csv")
+write.table(table(stroke_coded %>% select(smoking_status, stroke)), "results/contingency_smoking_status.csv")
