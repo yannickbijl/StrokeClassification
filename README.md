@@ -20,3 +20,6 @@ Indicating that all (in combination) could have potential to predict stroke.
 | Age               | 1.00 | 0.24              | 0.22 |
 | Avg Glucose Level | 0.24 | 1.00              | 0.08 |
 | BMI               | 0.22 | 0.08              | 1.00 |
+
+Contingency tables between stroke and other categorical data show no direct solution for classification.
+From these initial results it becomes clear that multiple factors are needed for classification.
