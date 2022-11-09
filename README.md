@@ -9,6 +9,9 @@ Both these attributes are excluded from the analysis.
 The stroke status will be used to evaluate the classification performance.
 
 ## Results
+Summary of the stroke data shows a large imbalance between the stoke classes with 4861 non-stroke patients and 249 stroke patients.  
+Similar imbalances can be seen for the hypertension and heart attack attributes.
+
 Correlations of numeric attributes shown no well-established links between each other.  
 Indicating that all (in combination) could have potential to predict stroke.
 
