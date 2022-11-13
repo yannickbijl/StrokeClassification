@@ -60,5 +60,10 @@ sink()
 
 # Split data in training (70%) and test (30%) set.
 sample_divide <- sample(c(TRUE, FALSE), nrow(stroke_coded), replace = TRUE, prob = c(0.7, 0.3))
-stroke_train <- df[sample_divide, ]
-stroke_test <- df[!sample_divide, ]
+stroke_train <- stroke_coded[sample_divide, ]
+stroke_test <- stroke_coded[!sample_divide, ]
+
+# Make Multiple Linear Regression Classifier
+classifier <- glm(data = stroke_train, stroke ~ hypertension + work_type + smoking_status + age + bmi + avg_glucose_level)
+# Test Classifier
+stroke_test_results <- predict(classifier, stroke_test)
