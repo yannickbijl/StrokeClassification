@@ -51,3 +51,8 @@ write.table(table(stroke_coded %>% select(ever_married, stroke)), "results/conti
 write.table(table(stroke_coded %>% select(work_type, stroke)), "results/contingency_work_type.csv")
 write.table(table(stroke_coded %>% select(residence_type, stroke)), "results/contingency_residence_type.csv")
 write.table(table(stroke_coded %>% select(smoking_status, stroke)), "results/contingency_smoking_status.csv")
+
+pca_results <- prcomp(stroke_coded %>% select(where(is.numeric)), scale = TRUE)
+sink("results/pca_stroke.txt")
+print(pca_results, width = 250) # large enough, but could need adjustment with different dataset
+sink()
