@@ -52,7 +52,13 @@ write.table(table(stroke_coded %>% select(work_type, stroke)), "results/continge
 write.table(table(stroke_coded %>% select(residence_type, stroke)), "results/contingency_residence_type.csv")
 write.table(table(stroke_coded %>% select(smoking_status, stroke)), "results/contingency_smoking_status.csv")
 
+# PCA analysis
 pca_results <- prcomp(stroke_coded %>% select(where(is.numeric)), scale = TRUE)
 sink("results/pca_stroke.txt")
 print(pca_results, width = 250) # large enough, but could need adjustment with different dataset
 sink()
+
+# Split data in training (70%) and test (30%) set.
+sample_divide <- sample(c(TRUE, FALSE), nrow(stroke_coded), replace = TRUE, prob = c(0.7, 0.3))
+stroke_train <- df[sample_divide, ]
+stroke_test <- df[!sample_divide, ]
