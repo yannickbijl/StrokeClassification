@@ -78,5 +78,6 @@ stroke_test_results <- data.frame(stroke_test_results, stroke_test$stroke) %>%
 
 class <- ggplot(stroke_test_results, aes(x = ids, y = result, color = stroke, shape = prediction)) +
          geom_point() +
-         geom_hline(yintercept = threshold)
+         geom_hline(yintercept = threshold) +
+         ggtitle(paste("threshold:", threshold))
 ggsave("results/outcomes.png", plot = class)
