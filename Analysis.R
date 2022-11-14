@@ -65,5 +65,6 @@ stroke_test <- stroke_coded[!sample_divide, ]
 
 # Make Multiple Linear Regression Classifier
 classifier <- glm(data = stroke_train, stroke ~ hypertension + work_type + smoking_status + age + bmi + avg_glucose_level)
+threshold <- classifier$coefficients[1] %>% as.vector()
 # Test Classifier
 stroke_test_results <- predict(classifier, stroke_test)
