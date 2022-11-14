@@ -71,9 +71,10 @@ stroke_test_results <- predict(classifier, stroke_test)
 
 stroke_test_results <- data.frame(stroke_test_results, stroke_test$stroke) %>%
                        rownames_to_column(var = "ids") %>%
-                       rename(result = stroke_test_results, stroke = stroke_test.stroke)
+                       rename(result = stroke_test_results, stroke = stroke_test.stroke) %>%
+                       mutate(prediction = ifelse(result > threshold, TRUE, FALSE))
 
-class <- ggplot(stroke_test_results, aes(x = ids, y = result, color = stroke)) +
+class <- ggplot(stroke_test_results, aes(x = ids, y = result, color = stroke, shape = prediction)) +
          geom_point() +
          geom_hline(yintercept = threshold)
-ggsave("results/outcomes.png", plot = box)
+ggsave("results/outcomes.png", plot = class)
