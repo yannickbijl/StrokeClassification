@@ -62,6 +62,8 @@ sink()
 sample_divide <- sample(c(TRUE, FALSE), nrow(stroke_coded), replace = TRUE, prob = c(0.7, 0.3))
 stroke_train <- stroke_coded[sample_divide, ]
 stroke_test <- stroke_coded[!sample_divide, ]
+write_csv(stroke_train, "data/training.csv")
+write_csv(stroke_test, "data/test.csv")
 
 # Make Multiple Linear Regression Classifier
 classifier <- glm(data = stroke_train, stroke ~ hypertension + heart_disease + work_type + smoking_status + age + bmi + avg_glucose_level)
