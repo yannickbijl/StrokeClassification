@@ -41,7 +41,7 @@ box <- ggplot(stroke_long, aes(x = name, y = value, color = stroke)) +
        geom_boxplot() +
        xlab("Attribute") +
        ylab("Stroke")
-ggsave("results/test.png", plot = box)
+ggsave("results/attributes.png", plot = box)
 
 # Get contingency tables between factor/logical attributes against stroke outcome
 write.table(table(stroke_coded %>% select(gender, stroke)), "results/contingency_gender.csv")
