@@ -68,3 +68,7 @@ classifier <- glm(data = stroke_train, stroke ~ hypertension + work_type + smoki
 threshold <- classifier$coefficients[1] %>% as.vector()
 # Test Classifier
 stroke_test_results <- predict(classifier, stroke_test)
+
+stroke_test_results <- data.frame(stroke_test_results, stroke_test$stroke) %>%
+                       rownames_to_column(var = "ids") %>%
+                       rename(result = stroke_test_results, stroke = stroke_test.stroke)
