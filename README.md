@@ -21,5 +21,10 @@ Indicating that all (in combination) could have potential to predict stroke.
 | Avg Glucose Level | 0.24 | 1.00              | 0.08 |
 | BMI               | 0.22 | 0.08              | 1.00 |
 
+Boxplots of the numeric data show major difference between the TRUE and FALSE classes of stroke for age and avg_glucose_level.  
+There is no clear difference for bmi. 
+
+![Atrributes](/results/attributes.png)
+
 Contingency tables between stroke and other categorical data show no direct solution for classification.
 From these initial results it becomes clear that multiple factors are needed for classification.
