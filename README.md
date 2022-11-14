@@ -38,3 +38,14 @@ The color indicates the actual stroke outcome.
 The threshold is given as a black solid line in the figure.
 
 ![Outcomes](/results/outcomes.png)
+
+## Conclusion
+Though the classifier does predict all the TRUE stroke cases, it misclassifies the vast majority of FALSE cases.
+This is likely due to the imbalance in the classes. 
+On the other hand, the classifier does predict a subset of FALSE stroke cases without any issue.
+Sadly enough, this provides not much information as we would like to find the TRUE stroke cases.
+Especially given their under-representation in the dataset.
+Therefore this classifier is insufficient for actual use.
+
+## Notes
+Despite the fact that the classification did not work, it was still a fun little side-project.
